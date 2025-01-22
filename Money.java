@@ -40,6 +40,17 @@ public class Money {
     public double totalMoney(){
         return (moneyArray[0])+(moneyArray[1]*5)+(moneyArray[2]*10)+(moneyArray[3]*20)+(moneyArray[4]*50)+(moneyArray[5]*100)+(moneyArray[6]*200)+(moneyArray[7]*500)+(moneyArray[8]*1000);
     }
+
+    /**
+     * Propose: Refactor the code to make use of helper/utility methods instead of many getters that deal with the same array.
+     * 
+     *  public int getPeso(int index){
+            return moneyArray[index];
+        }
+     */
+    
+
+
     /**This method gets the amount stored in array zero which is One peso
      * @return <@code> the current stored amount </@code>
      * */

@@ -201,6 +201,29 @@ public class RegularVM {
         }
         return vmMoney;
     }
+
+    /*
+     * This method will be affected by the proposed refactor of the Money class.
+     * Propose: Perform State refactoring (if statement) in displaying only the money denominations greater than zero.
+     *  public static void displayMoney(Money money) {
+            for (int i=0; i<9; i++){
+                if (money.getPeso(i) > 0){
+                    switch (i){
+                        case 0 -> System.out.println("\t1) 1 PHP Coins    [" + money.getOnePeso() + "] : " + (money.getOnePeso()));
+                        case 1 -> System.out.println("\t2) 5 PHP Coins    [" + money.getFivePeso() + "] : " + (money.getFivePeso() *5));
+                        case 2 -> System.out.println("\t3) 10 PHP Coins   [" + money.getTenPeso() + "] : " + (money.getTenPeso() * 10));
+                        case 3 -> System.out.println("\t4) 20 PHP Bills   [" + money.getTwentyPeso() + "] : " + (money.getTwentyPeso() * 20));
+                        case 4 -> System.out.println("\t5) 50 PHP Bills   [" + money.getFiftyPeso() + "] : " + (money.getFiftyPeso() * 50));
+                        case 5 -> System.out.println("\t6) 100 PHP Bills  [" + money.getOneHundredPeso() + "] : " + (money.getOneHundredPeso() * 100));
+                        case 6 -> System.out.println("\t7) 200 PHP Bills  [" + money.getTwoHundredPeso() + "] : " + (money.getTwoHundredPeso() * 200));
+                        case 7 -> System.out.println("\t8) 500 PHP Bills  [" + money.getFiveHudrendPeso() + "] : " + (money.getFiveHudrendPeso() * 500));
+                        case 8 -> System.out.println("\t9) 1000 PHP Bills [" + money.getOneThousandPeso() + "] : " + (money.getOneThousandPeso() * 1000));
+                    }
+                }
+            }
+        }
+     */
+    
     /** This method will display the total computed money of each money denomination
      * @param money that contains information about the denominations and quantities of money in a vending machine.
      * */
@@ -238,6 +261,7 @@ public class RegularVM {
                 if(choice != 11 && isSlotNull(choice-1))
                     System.out.println("This Slot is empty, please try again.");
             }while(choice != 11 && isSlotNull(choice-1));
+            
             if (choice != 11){ //not Exit
                 double userChoice;
                 displayDetails(choice - 1);
@@ -286,6 +310,35 @@ public class RegularVM {
                 break;
         }
     }
+
+    /*
+     * Propose: Helper class in the changeCalculator method to make it more readable and maintainable by utilizing arrays and loops.
+     * 
+     * private static double changeCalculator(int payment, int price, Money vmMoney) {
+            int[] moneyArray = {1, 5, 10, 20, 50, 100, 200, 500, 1000};
+            int temp = 0;
+
+            for (int i = 8; i >= 0; i--) {
+                if (price > moneyArray[i]) {
+                    temp = price / moneyArray[i];
+                    vmMoney.setMoney(i + 1, temp);
+                    price = price - (temp * moneyArray[i]);
+
+                    if (moneyArray[i] == 1) {
+                        temp = price;
+                        vmMoney.setMoney(1, temp);
+                    }
+                }
+            }
+
+            if (payment > price)
+                return payment - price;
+            else if (payment == price)
+                return 0;
+
+            return -1;
+        }
+     */
     /** This method calculates the change to be given to a customer after they make a payment for a given price.
      * @param payment amount of money payment given by the user
      * @param price amount of the item the user buys

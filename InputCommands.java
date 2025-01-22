@@ -24,6 +24,7 @@ public class InputCommands {
         }while (input > choice);
         return choice;
     }
+
     /**This method takes a user-provided integer input and checks to see if it is within the given range, including the minimum and maximum choices. <p>In addition, it disqualifies the number zero as an option. It keeps asking for input from the user until an appropriate value is entered, at which point it returns the selected value.</p>
      * @param minChoice minimum choice the user can input based from the given range
      * @param maxChoice maximum choice the user can input based from the given range
@@ -36,6 +37,7 @@ public class InputCommands {
         }while(choice > maxChoice|| choice < minChoice || choice==0);
         return choice;
     }
+    
     /**
      * This method is to read a string input from the user.<br>It reads a single word, which is a string of letters without any spaces, and outputs it.</br>
      * @return <code>String input of the user </code>
