@@ -143,64 +143,85 @@ public class RegularVM {
     /** This method shows the availability of money deomination for creation
      * @param vmMoney access and manipulate the money information specific to the vending machine being operated.
      */
+    // public static Money putMoneyInVM(Money vmMoney) {
+    //     System.out.println("\t1) 1 PHP Coins");
+    //     System.out.println("\t2) 5 PHP Coins");
+    //     System.out.println("\t3) 10 PHP Coins");
+    //     System.out.println("\t4) 20 PHP Bills");
+    //     System.out.println("\t5) 50 PHP Bills");
+    //     System.out.println("\t6) 100 PHP Bills");
+    //     System.out.println("\t7) 200 PHP Bills");
+    //     System.out.println("\t8) 500 PHP Bills");
+    //     System.out.println("\t9) 1000 PHP Bills");
+    //     System.out.println("\t10) Done");
+    //     System.out.print("choose : ");
+    //     int choice = InputCommands.ScanInt(1, 10);
+    //     switch (choice) {
+    //         case 1:
+    //             System.out.print("How many 1 peso coin : ");
+    //             vmMoney.setMoney(choice, InputCommands.ScanInt(0));
+    //             break;
+    //         case 2:
+    //             System.out.print("How many 5 peso coin : ");
+    //             vmMoney.setMoney(choice, InputCommands.ScanInt(0));
+    //             break;
+    //         case 3:
+    //             System.out.print("How many 10 peso coin : ");
+    //             vmMoney.setMoney(choice, InputCommands.ScanInt(0));
+    //             break;
+    //         case 4:
+    //             System.out.print("How many 20 peso bill : ");
+    //             vmMoney.setMoney(choice, InputCommands.ScanInt(0));
+    //             break;
+    //         case 5:
+    //             System.out.print("How many 50 peso bill : ");
+    //             vmMoney.setMoney(choice, InputCommands.ScanInt(0));
+    //             break;
+    //         case 6:
+    //             System.out.print("How many 100 peso bill : ");
+    //             vmMoney.setMoney(choice, InputCommands.ScanInt(0));
+    //             break;
+    //         case 7:
+    //             System.out.print("How many 200 peso bill : ");
+    //             vmMoney.setMoney(choice, InputCommands.ScanInt(0));
+    //             break;
+    //         case 8:
+    //             System.out.print("How many 500 peso : ");
+    //             vmMoney.setMoney(choice, InputCommands.ScanInt(0));
+    //             break;
+    //         case 9:
+    //             System.out.print("How many 1,000 peso bill : ");
+    //             vmMoney.setMoney(choice, InputCommands.ScanInt(0));
+    //             break;
+    //         case 10:
+    //             break;
+    //         default:
+    //             putMoneyInVM(vmMoney);
+    //             break;
+    //     }
+    //     return vmMoney;
+    // }
+
     public static Money putMoneyInVM(Money vmMoney) {
-        System.out.println("\t1) 1 PHP Coins");
-        System.out.println("\t2) 5 PHP Coins");
-        System.out.println("\t3) 10 PHP Coins");
-        System.out.println("\t4) 20 PHP Bills");
-        System.out.println("\t5) 50 PHP Bills");
-        System.out.println("\t6) 100 PHP Bills");
-        System.out.println("\t7) 200 PHP Bills");
-        System.out.println("\t8) 500 PHP Bills");
-        System.out.println("\t9) 1000 PHP Bills");
-        System.out.println("\t10) Done");
-        System.out.print("choose : ");
-        int choice = InputCommands.ScanInt(1, 10);
-        switch (choice) {
-            case 1:
-                System.out.print("How many 1 peso coin : ");
-                vmMoney.setMoney(choice, InputCommands.ScanInt(0));
-                break;
-            case 2:
-                System.out.print("How many 5 peso coin : ");
-                vmMoney.setMoney(choice, InputCommands.ScanInt(0));
-                break;
-            case 3:
-                System.out.print("How many 10 peso coin : ");
-                vmMoney.setMoney(choice, InputCommands.ScanInt(0));
-                break;
-            case 4:
-                System.out.print("How many 20 peso bill : ");
-                vmMoney.setMoney(choice, InputCommands.ScanInt(0));
-                break;
-            case 5:
-                System.out.print("How many 50 peso bill : ");
-                vmMoney.setMoney(choice, InputCommands.ScanInt(0));
-                break;
-            case 6:
-                System.out.print("How many 100 peso bill : ");
-                vmMoney.setMoney(choice, InputCommands.ScanInt(0));
-                break;
-            case 7:
-                System.out.print("How many 200 peso bill : ");
-                vmMoney.setMoney(choice, InputCommands.ScanInt(0));
-                break;
-            case 8:
-                System.out.print("How many 500 peso : ");
-                vmMoney.setMoney(choice, InputCommands.ScanInt(0));
-                break;
-            case 9:
-                System.out.print("How many 1,000 peso bill : ");
-                vmMoney.setMoney(choice, InputCommands.ScanInt(0));
-                break;
-            case 10:
-                break;
-            default:
-                putMoneyInVM(vmMoney);
-                break;
+        while (true) {
+            // Display available denominations using helper class
+            Helper.displayDenominations();
+            System.out.println("\t10) Done");
+            System.out.print("Choose: ");
+    
+            int choice = InputCommands.ScanInt(1, 10);
+            if (choice == 10) {
+                break; // Exit if "Done" is selected
+            }
+    
+            // Get the selected denomination and process it
+            Denomination selectedDenomination = Denomination.values()[choice - 1];
+            selectedDenomination.processInput(vmMoney);
         }
+    
         return vmMoney;
     }
+    
 
     /*
      * This method will be affected by the proposed refactor of the Money class.
@@ -227,19 +248,35 @@ public class RegularVM {
     /** This method will display the total computed money of each money denomination
      * @param money that contains information about the denominations and quantities of money in a vending machine.
      * */
+    // public static void displayMoney(Money money) {
+    //     System.out.println(">> Total Money in Vending Machine <<");
+    //     System.out.println("\t1) 1 PHP Coins    [" + money.getOnePeso() + "] : " + (money.getOnePeso()));
+    //     System.out.println("\t2) 5 PHP Coins    [" + money.getFivePeso() + "] : " + (money.getFivePeso() *5));
+    //     System.out.println("\t3) 10 PHP Coins   [" + money.getTenPeso() + "] : " + (money.getTenPeso() * 10));
+    //     System.out.println("\t4) 20 PHP Bills   [" + money.getTwentyPeso() + "] : " + (money.getTwentyPeso() * 20));
+    //     System.out.println("\t5) 50 PHP Bills   [" + money.getFiftyPeso() + "] : " + (money.getFiftyPeso() * 50));
+    //     System.out.println("\t6) 100 PHP Bills  [" + money.getOneHundredPeso() + "] : " + (money.getOneHundredPeso() * 100));
+    //     System.out.println("\t7) 200 PHP Bills  [" + money.getTwoHundredPeso() + "] : " + (money.getTwoHundredPeso() * 200));
+    //     System.out.println("\t8) 500 PHP Bills  [" + money.getFiveHudrendPeso() + "] : " + (money.getFiveHudrendPeso() * 500));
+    //     System.out.println("\t9) 1000 PHP Bills [" + money.getOneThousandPeso() + "] : " + (money.getOneThousandPeso() * 1000));
+    //     System.out.println("\t= Total Money  \t\t  : " + money.totalMoney() + "\n");
+    // }
+
     public static void displayMoney(Money money) {
         System.out.println(">> Total Money in Vending Machine <<");
-        System.out.println("\t1) 1 PHP Coins    [" + money.getOnePeso() + "] : " + (money.getOnePeso()));
-        System.out.println("\t2) 5 PHP Coins    [" + money.getFivePeso() + "] : " + (money.getFivePeso() *5));
-        System.out.println("\t3) 10 PHP Coins   [" + money.getTenPeso() + "] : " + (money.getTenPeso() * 10));
-        System.out.println("\t4) 20 PHP Bills   [" + money.getTwentyPeso() + "] : " + (money.getTwentyPeso() * 20));
-        System.out.println("\t5) 50 PHP Bills   [" + money.getFiftyPeso() + "] : " + (money.getFiftyPeso() * 50));
-        System.out.println("\t6) 100 PHP Bills  [" + money.getOneHundredPeso() + "] : " + (money.getOneHundredPeso() * 100));
-        System.out.println("\t7) 200 PHP Bills  [" + money.getTwoHundredPeso() + "] : " + (money.getTwoHundredPeso() * 200));
-        System.out.println("\t8) 500 PHP Bills  [" + money.getFiveHudrendPeso() + "] : " + (money.getFiveHudrendPeso() * 500));
-        System.out.println("\t9) 1000 PHP Bills [" + money.getOneThousandPeso() + "] : " + (money.getOneThousandPeso() * 1000));
-        System.out.println("\t= Total Money  \t\t  : " + money.totalMoney() + "\n");
+        int i = 0;
+    
+        // Iterate over the Denomination enum
+        for (Denomination denomination : Denomination.values()) {
+            int count = money.getPeso(i);
+            int value = count * denomination.getValue();
+    
+            System.out.printf("\t%-20s [%d] : %d\n", denomination.getDescription(), count, value);
+            i++;
+        }
+        System.out.println("\t= Total Money \t\t  : " + money.totalMoney() + "\n");
     }
+    
 
     /**
      * This method is passing a Money object, it can update or set the money denomination for the vending machine
@@ -314,91 +351,118 @@ public class RegularVM {
     /*
      * Propose: Helper class in the changeCalculator method to make it more readable and maintainable by utilizing arrays and loops.
      * 
-     * private static double changeCalculator(int payment, int price, Money vmMoney) {
-            int[] moneyArray = {1, 5, 10, 20, 50, 100, 200, 500, 1000};
-            int temp = 0;
+     */
+    // private static double changeCalculator(int payment, int price, Money vmMoney) {
+    //     int[] moneyArray = {1, 5, 10, 20, 50, 100, 200, 500, 1000};
+    //     int temp = 0;
 
-            for (int i = 8; i >= 0; i--) {
-                if (price > moneyArray[i]) {
-                    temp = price / moneyArray[i];
-                    vmMoney.setMoney(i + 1, temp);
-                    price = price - (temp * moneyArray[i]);
+    //     for (int i = 8; i >= 0; i--) {
+    //         if (price > moneyArray[i]) {
+    //             temp = price / moneyArray[i];
+    //             vmMoney.setMoney(i + 1, temp);
+    //             price = price - (temp * moneyArray[i]);
 
-                    if (moneyArray[i] == 1) {
-                        temp = price;
-                        vmMoney.setMoney(1, temp);
-                    }
+    //             if (moneyArray[i] == 1) {
+    //                 temp = price;
+    //                 vmMoney.setMoney(1, temp);
+    //             }
+    //         }
+    //     }
+
+    //     if (payment > price)
+    //         return payment - price;
+    //     else if (payment == price)
+    //         return 0;
+
+    //     return -1;
+    // }
+
+    private static double changeCalculator(int payment, int price, Money vmMoney) {
+        int temp = 0;
+
+        for (int i = Denomination.values().length - 1; i >= 0; i--) {
+            Denomination denomination = Denomination.values()[i];
+        
+            if (price > denomination.getValue()) {
+                temp = price / denomination.getValue();
+                Helper.updateMoney(vmMoney, denomination, temp);
+                price -= temp * denomination.getValue();
+
+                if (denomination == Denomination.ONE_PESO) {
+                    temp = price;
+                    Helper.updateMoney(vmMoney, denomination, temp);
                 }
             }
 
-            if (payment > price)
+            if (payment > price) {
                 return payment - price;
-            else if (payment == price)
+            } else if (payment == price) {
                 return 0;
-
-            return -1;
+            }
         }
-     */
+
+        return -1;
+    }
     /** This method calculates the change to be given to a customer after they make a payment for a given price.
      * @param payment amount of money payment given by the user
      * @param price amount of the item the user buys
      * @param vmMoney access and manipulate the money information specific to the vending machine being operated.
      * @return <code> depending on the given situation </code>
      **/
-    private static double changeCalculator(int payment, int price, Money vmMoney){
-        int temp;
+    // private static double changeCalculator(int payment, int price, Money vmMoney){
+    //     int temp;
 
-        if(price/1000 > 0){
-            temp = (price/1000);
-            vmMoney.setMoney(9, temp);
-            price = price-(temp*1000);
-        }
-       if(price/500 > 0) {
-            temp = (price / 500);
-            vmMoney.setMoney(8, temp);
-            price = price-(temp*500);
-        }
-        if(price/200 > 0){
-            temp = (price / 200);
-            vmMoney.setMoney(7, temp);
-            price = price-(temp*200);
-        }
-        if(price/100 > 0) {
-            temp = (price / 100);
-            vmMoney.setMoney(6, temp);
-            price = price-(temp*100);
-        }
-        if(price/50 > 0) {
-            temp = (price / 50);
-            vmMoney.setMoney(5, temp);
-            price = price-(temp*50);
-        }
-        if(price/20 > 0) {
-            temp = (price / 20);
-            vmMoney.setMoney(4, temp);
-            price = price-(temp*20);
-        }
-        if(price/10 > 0) {
-            temp = (price / 10);
-            vmMoney.setMoney(3, temp);
-            price = price-(temp*10);
-        }
-        if(price/5 > 0) {
-            temp = (price / 5);
-            vmMoney.setMoney(2, temp);
-            price = price-(temp*5);
-        }
-        if(price > 0) {
-            temp = (price);
-            vmMoney.setMoney(1, temp);
-        }
-        if (payment > price)
-            return payment - price;
-        if (payment == price)
-            return 0;
+    //     if(price/1000 > 0){
+    //         temp = (price/1000);
+    //         vmMoney.setMoney(9, temp);
+    //         price = price-(temp*1000);
+    //     }
+    //    if(price/500 > 0) {
+    //         temp = (price / 500);
+    //         vmMoney.setMoney(8, temp);
+    //         price = price-(temp*500);
+    //     }
+    //     if(price/200 > 0){
+    //         temp = (price / 200);
+    //         vmMoney.setMoney(7, temp);
+    //         price = price-(temp*200);
+    //     }
+    //     if(price/100 > 0) {
+    //         temp = (price / 100);
+    //         vmMoney.setMoney(6, temp);
+    //         price = price-(temp*100);
+    //     }
+    //     if(price/50 > 0) {
+    //         temp = (price / 50);
+    //         vmMoney.setMoney(5, temp);
+    //         price = price-(temp*50);
+    //     }
+    //     if(price/20 > 0) {
+    //         temp = (price / 20);
+    //         vmMoney.setMoney(4, temp);
+    //         price = price-(temp*20);
+    //     }
+    //     if(price/10 > 0) {
+    //         temp = (price / 10);
+    //         vmMoney.setMoney(3, temp);
+    //         price = price-(temp*10);
+    //     }
+    //     if(price/5 > 0) {
+    //         temp = (price / 5);
+    //         vmMoney.setMoney(2, temp);
+    //         price = price-(temp*5);
+    //     }
+    //     if(price > 0) {
+    //         temp = (price);
+    //         vmMoney.setMoney(1, temp);
+    //     }
+    //     if (payment > price)
+    //         return payment - price;
+    //     if (payment == price)
+    //         return 0;
 
-        return -1;
-    }
+    //     return -1;
+    // }
 
     /**This method allows to read the value of vmMoneyDenomination for the current object.
      * @return this.vmMoneyDenomination;

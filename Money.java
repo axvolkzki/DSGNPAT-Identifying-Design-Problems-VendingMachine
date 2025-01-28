@@ -43,67 +43,68 @@ public class Money {
 
     /**
      * Propose: Refactor the code to make use of helper/utility methods instead of many getters that deal with the same array.
-     * 
-     *  public int getPeso(int index){
-            return moneyArray[index];
-        }
      */
+     
+    public int getPeso(int index){
+        return moneyArray[index];
+    }
+     
     
 
 
-    /**This method gets the amount stored in array zero which is One peso
-     * @return <@code> the current stored amount </@code>
-     * */
-    public int getOnePeso(){
-        return moneyArray[0];
-    }
-    /**This method gets the amount stored in array one which is Five peso
-     * @return <@code> the current stored amount </@code>
-     * */
-    public int getFivePeso(){
-        return moneyArray[1];
-    }
-    /**This method gets the amount stored in array two which is Ten peso
-     * @return <@code> the current stored amount </@code>
-     **/
-    public int getTenPeso(){
-        return moneyArray[2];
-    }
-    /**This method gets the amount stored in array three which is Twenty peso
-     * @return <@code> the current stored amount </@code>
-     **/
-    public int getTwentyPeso(){
-        return moneyArray[3];
-    }
-    /**This method gets the amount stored in array four which is Fifty peso
-     * @return <@code> the current stored amount </@code>
-     **/
-    public int getFiftyPeso(){
-        return moneyArray[4];
-    }
-    /**This method gets the amount stored in array five which is One Hundred peso
-     * @return <@code> the current stored amount </@code>
-     **/
-    public int getOneHundredPeso(){
-        return moneyArray[5];
-    }
-    /**This method gets the amount stored in array six which is Two Hundred peso
-     * @return <@code> the current stored amount </@code>
-     **/
-    public int getTwoHundredPeso(){
-        return moneyArray[6];
-    }
-    /**This method gets the amount stored in array seven which is Five Hundred peso
-     * @return <@code> the current stored amount </@code>
-     **/
-    public int getFiveHudrendPeso(){
-        return moneyArray[7];
-    }
-    /**This method gets the amount stored in array eight which is One Thousand peso
-     * @return <@code> the current stored amount </@code>
-     **/
-    public int getOneThousandPeso(){
-        return moneyArray[8];
-    }
+    // /**This method gets the amount stored in array zero which is One peso
+    //  * @return <@code> the current stored amount </@code>
+    //  * */
+    // public int getOnePeso(){
+    //     return moneyArray[0];
+    // }
+    // /**This method gets the amount stored in array one which is Five peso
+    //  * @return <@code> the current stored amount </@code>
+    //  * */
+    // public int getFivePeso(){
+    //     return moneyArray[1];
+    // }
+    // /**This method gets the amount stored in array two which is Ten peso
+    //  * @return <@code> the current stored amount </@code>
+    //  **/
+    // public int getTenPeso(){
+    //     return moneyArray[2];
+    // }
+    // /**This method gets the amount stored in array three which is Twenty peso
+    //  * @return <@code> the current stored amount </@code>
+    //  **/
+    // public int getTwentyPeso(){
+    //     return moneyArray[3];
+    // }
+    // /**This method gets the amount stored in array four which is Fifty peso
+    //  * @return <@code> the current stored amount </@code>
+    //  **/
+    // public int getFiftyPeso(){
+    //     return moneyArray[4];
+    // }
+    // /**This method gets the amount stored in array five which is One Hundred peso
+    //  * @return <@code> the current stored amount </@code>
+    //  **/
+    // public int getOneHundredPeso(){
+    //     return moneyArray[5];
+    // }
+    // /**This method gets the amount stored in array six which is Two Hundred peso
+    //  * @return <@code> the current stored amount </@code>
+    //  **/
+    // public int getTwoHundredPeso(){
+    //     return moneyArray[6];
+    // }
+    // /**This method gets the amount stored in array seven which is Five Hundred peso
+    //  * @return <@code> the current stored amount </@code>
+    //  **/
+    // public int getFiveHudrendPeso(){
+    //     return moneyArray[7];
+    // }
+    // /**This method gets the amount stored in array eight which is One Thousand peso
+    //  * @return <@code> the current stored amount </@code>
+    //  **/
+    // public int getOneThousandPeso(){
+    //     return moneyArray[8];
+    // }
 
 }
